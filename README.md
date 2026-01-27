@@ -64,13 +64,6 @@ Once the application is running, you can access the interactive API documentatio
 
 Configuration is handled in `appsettings.json`.
 
-**Database Connection String:**
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Host=localhost;Port=5432;Database=ManageMovie;Username=admin;Password=TestPassword2025;"
-}
-```
-
 ## 🧪 Testing
 
 You can use the `ManageMovies.http` file included in the project to test endpoints directly from your IDE (VS Code, Rider, or Visual Studio).
