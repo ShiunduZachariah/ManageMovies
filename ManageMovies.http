@@ -1,6 +1,44 @@
 @ManageMovies_HostAddress = http://localhost:5107
 
-GET {{ManageMovies_HostAddress}}/weatherforecast/
-Accept: application/json
+### Create a new movie (Inception)
+POST {{ManageMovies_HostAddress}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "genre": "Sci-Fi",
+  "releaseDate": "2010-07-16T00:00:00Z",
+  "rating": 8.8
+}
 
 ###
+
+### Create a new movie (The Godfather)
+POST {{ManageMovies_HostAddress}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "The Godfather",
+  "genre": "Crime",
+  "releaseDate": "1972-03-24T00:00:00Z",
+  "rating": 9.2
+}
+
+###
+
+### Create a new movie (The Dark Knight)
+POST {{ManageMovies_HostAddress}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "The Dark Knight",
+  "genre": "Action",
+  "releaseDate": "2008-07-18T00:00:00Z",
+  "rating": 9.0
+}
+
+###
+
+### Get all movies
+GET {{ManageMovies_HostAddress}}/api/movies
+Accept: application/json
