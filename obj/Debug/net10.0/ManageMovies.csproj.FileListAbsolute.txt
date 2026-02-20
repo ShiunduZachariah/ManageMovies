@@ -121,3 +121,4 @@ C:\Users\ZacH\RiderProjects\ManageMovies\ManageMovies\obj\Debug\net10.0\refint\M
 C:\Users\ZacH\RiderProjects\ManageMovies\ManageMovies\obj\Debug\net10.0\ManageMovies.pdb
 C:\Users\ZacH\RiderProjects\ManageMovies\ManageMovies\obj\Debug\net10.0\ManageMovies.genruntimeconfig.cache
 C:\Users\ZacH\RiderProjects\ManageMovies\ManageMovies\obj\Debug\net10.0\ref\ManageMovies.dll
+C:\Users\ZacH\RiderProjects\ManageMovies\ManageMovies\obj\Debug\net10.0\ManageMovies.sourcelink.json
