@@ -66,6 +66,29 @@ public class MovieService : IMovieService
         await  _dbContext.SaveChangesAsync();
     }
 
+    //Patch Movies - partial update
+
+    public async Task PatchMovieAsync(Guid id, PatchMovieDto command)
+    {
+        var movieToUpdate = await _dbContext.Movies.FindAsync(id);
+        if (movieToUpdate is null)
+            throw new ArgumentNullException(nameof(id), "Invalid Movie Id.");
+
+        var any = command.Title is not null || command.Genre is not null || command.ReleaseDate is not null || command.Rating is not null;
+        if (!any)
+            throw new ArgumentException("Must supply at least one field to patch.");
+
+        var title = command.Title ?? movieToUpdate.Title;
+        var genre = command.Genre ?? movieToUpdate.Genre;
+        var releaseDate = command.ReleaseDate ?? movieToUpdate.ReleaseDate;
+        var rating = command.Rating ?? movieToUpdate.Rating;
+
+        movieToUpdate.Update(title, genre, releaseDate, rating);
+
+        await _dbContext.SaveChangesAsync();
+    }
+
+
     
     //Delete Movies
     public async Task DeleteMovieAsync(Guid id)

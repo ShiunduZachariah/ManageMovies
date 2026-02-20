@@ -54,6 +54,31 @@ public static class MovieEndpoints
         .WithSummary("Updates a movie")
         .Produces(StatusCodes.Status204NoContent);
         
+        //Patch a Movie
+        static async Task<IResult> PatchMovieHandler(IMovieService movieService, Guid id, PatchMovieDto dto)
+        {
+            try
+            {
+                await movieService.PatchMovieAsync(id, dto);
+                return TypedResults.NoContent();
+            }
+            catch (ArgumentNullException)
+            {
+                return TypedResults.NotFound(new { message = $"Movie with {id} not found!" });
+            }
+            catch (ArgumentException ex)
+            {
+                return TypedResults.BadRequest(new { message = ex.Message });
+            }
+        }
+
+        movieApi.MapPatch("/{id}", (Func<IMovieService, Guid, PatchMovieDto, Task<IResult>>)PatchMovieHandler)
+            .WithTags("Movies")
+            .WithSummary("Partially updates a movie")
+            .Produces(StatusCodes.Status204NoContent)
+            .Produces(StatusCodes.Status404NotFound)
+            .Produces(StatusCodes.Status400BadRequest);
+        
         //Delete a Movie
         movieApi.MapDelete("/{id}", async  (IMovieService movieService, Guid id) =>
         {
